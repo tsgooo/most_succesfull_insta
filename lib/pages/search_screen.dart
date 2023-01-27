@@ -47,7 +47,7 @@ class _SearchScreenState extends State<SearchScreen> {
             onFieldSubmitted: (String _) {
               setState(() {
                 isShowUser = true;
-                print('ene daragdaad bainaaaaaa');
+                print('ene daragdaj l bainadaa');
               });
             },
           ),
