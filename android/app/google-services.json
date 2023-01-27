@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "347616233725",
+    "project_id": "tagramm-52a7d",
+    "storage_bucket": "tagramm-52a7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347616233725:android:3480dd000215ac98cf9694",
+        "android_client_info": {
+          "package_name": "com.example.tagramm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347616233725-jut63rnm448hap7jkv2g0bnvtivnspc5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfNPhieBZF9WGJJrBVKe2YgxjUqHtVUnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347616233725-jut63rnm448hap7jkv2g0bnvtivnspc5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
