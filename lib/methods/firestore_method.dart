@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tagramm/methods/storage_method.dart';
 import 'package:tagramm/models/post.dart';
 import 'package:uuid/uuid.dart';
@@ -92,5 +93,35 @@ class FirestoreMethods {
         e.toString(),
       );
     }
+  }
+
+  Future<void> followUser(String uid, String followId) async {
+    try {
+      DocumentSnapshot snap =
+          await firestore.collection('users').doc(uid).get();
+      List following = (snap.data()! as dynamic)['following'];
+
+      if (following.contains(followId)) {
+        await firestore.collection('users').doc(followId).update({
+          'followers': FieldValue.arrayRemove([uid])
+        });
+
+        await firestore.collection('users').doc(uid).update({
+          'following': FieldValue.arrayRemove([followId])
+        });
+      } else {
+        await firestore.collection('users').doc(followId).update({
+          'followers': FieldValue.arrayUnion([uid])
+        });
+
+        await firestore.collection('users').doc(uid).update({
+          'following': FieldValue.arrayUnion([followId])
+        });
+      }
+    } catch (e) {}
+  }
+
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tagramm/methods/firestore_method.dart';
 import 'package:tagramm/pages/comment_screen.dart';
+import 'package:tagramm/pages/profile_screen.dart';
 import 'package:tagramm/utilities/colors.dart';
 import 'package:tagramm/utilities/utils.dart';
 
@@ -73,11 +74,22 @@ class _PostCardState extends State<PostCard> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          widget.snap['username'],
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ProfileScreen(
+                                  uid: FirebaseAuth.instance.currentUser!.uid,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            widget.snap['username'],
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
@@ -307,7 +319,7 @@ class _PostCardState extends State<PostCard> {
                       widget.snap['datePublished'].toDate(),
                     ),
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 12,
                       color: secondaryColor,
                     ),
                   ),

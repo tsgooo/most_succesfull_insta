@@ -44,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -51,7 +52,11 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const Text(
                 'Instagram',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(height: 25),
               Padding(
@@ -72,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
@@ -100,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       'Forgot password',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -123,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: _isLoading
                           ? const Center(
                               child: CircularProgressIndicator(
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             )
                           : const Text('Login'),
@@ -134,8 +139,13 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Don\'t have an account?'),
-                  const SizedBox(width: 20),
+                  const Text(
+                    'Don\'t have an account?',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
@@ -147,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: const Text(
                       'Register',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

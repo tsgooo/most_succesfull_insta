@@ -67,6 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -187,10 +188,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: _isLoading
                           ? const Center(
                               child: CircularProgressIndicator(
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             )
-                          : const Text('Sign up'),
+                          : const Text(
+                              'Sign up',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
                     ),
                   ),
                 ),
@@ -198,8 +204,13 @@ class _RegisterPageState extends State<RegisterPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Already have an account?'),
-                  const SizedBox(width: 20),
+                  const Text(
+                    'Already have an account?',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
@@ -211,7 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: const Text(
                       'Login',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

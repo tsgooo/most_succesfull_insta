@@ -10,19 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List people = [
-    'Dondog',
-    'Dulmaa',
-    'Damar',
-    'Dookoo',
-    'DinDor',
-    'Deegii',
-    'cjwv',
-    'v wjo',
-    ' vowj v',
-    'sa ohjre',
-    'ae jbo',
-  ];
 
   @override
   Widget build(BuildContext context) {
