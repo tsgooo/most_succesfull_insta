@@ -2,7 +2,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tagramm/methods/storage_method.dart';
-import 'package:tagramm/models/post.dart';
+import 'package:tagramm/models/image.dart';
 import 'package:uuid/uuid.dart';
 
 class FirestoreMethods {

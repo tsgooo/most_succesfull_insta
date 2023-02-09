@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:tagramm/methods/auth_method.dart';
 import 'package:tagramm/pages/home.dart';
 import 'package:tagramm/pages/register_page.dart';
-import 'package:tagramm/utilities/utils.dart';
+import 'package:tagramm/utilities/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -31,13 +33,20 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     if (res == 'Success') {
+      Get.snackbar(
+        res,
+        'Welcome to the party!',
+      );
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const Home(),
         ),
       );
     } else {
-      showSnackbar(res, context);
+      Get.snackbar(
+        'Some problem occurred logging in user!',
+        res,
+      );
     }
   }
 
@@ -50,22 +59,22 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Instagram',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+              SvgPicture.asset(
+                'lib/images/ic_instagram.svg',
+                color: Colors.white,
               ),
               const SizedBox(height: 25),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
+                  style: const TextStyle(color: Colors.black),
                   keyboardType: TextInputType.emailAddress,
                   controller: emailController,
                   decoration: const InputDecoration(
                     hintText: 'Email',
+                    hintStyle: TextStyle(
+                      color: secondaryColor,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                     ),
@@ -81,10 +90,14 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
+                  style: const TextStyle(color: Colors.black),
                   obscureText: true,
                   controller: passwordController,
                   decoration: const InputDecoration(
                     hintText: 'Password',
+                    hintStyle: TextStyle(
+                      color: secondaryColor,
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                     ),
@@ -96,23 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    Text(
-                      'Forgot password',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 50),
               GestureDetector(
                 onTap: loginUser,
                 child: Padding(
@@ -128,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: _isLoading
                           ? const Center(
                               child: CircularProgressIndicator(
-                                color: Colors.black,
+                                color: Colors.white,
                               ),
                             )
                           : const Text('Login'),
@@ -136,6 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

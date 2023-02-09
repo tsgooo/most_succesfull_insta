@@ -1,139 +1,88 @@
+//
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-// ignore: must_be_immutable
-class ShopPage extends StatelessWidget {
-  ShopPage({super.key});
+class AddVideo extends StatefulWidget {
+  const AddVideo({super.key});
 
-  bool onScrolled = false;
+  @override
+  State<AddVideo> createState() => _AddVideoState();
+}
+
+class _AddVideoState extends State<AddVideo> {
+  // File? video;
+
+  pickVideo(ImageSource source, BuildContext context) async {
+    final video = await ImagePicker().pickVideo(source: source);
+    if (video != null) {
+      // Navigator.of(context).push(
+      //   MaterialPageRoute(
+      //     builder: (context) => ConfirmScreen(
+      //       videoFile: File(video.path),
+      //       videoPath: video.path,
+      //     ),
+      //   ),
+      // );
+    }
+  }
+
+  _selectImage(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return SimpleDialog(
+            title: const Text('Create a post'),
+            children: [
+              SimpleDialogOption(
+                padding: const EdgeInsets.all(20),
+                child: const Text('Record a video'),
+                onPressed: () => pickVideo(ImageSource.camera, context),
+              ),
+              SimpleDialogOption(
+                padding: const EdgeInsets.all(20),
+                child: const Text('Choose from gallery'),
+                onPressed: () => pickVideo(ImageSource.gallery, context),
+              ),
+              SimpleDialogOption(
+                  padding: const EdgeInsets.all(20),
+                  child: const Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  }),
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      // appBar: PreferredSize(
-      //   preferredSize: const Size.fromHeight(35),
-      //   child: AppBar(
-      //     title: Container(
-      //       color: Colors.transparent,
-      //       child: Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Row(
-      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //           children: [
-      //             const Text('Shop',
-      //                 style: TextStyle(fontWeight: FontWeight.bold)),
-      //             Row(
-      //               children: const [
-      //                 Icon(Icons.book_online),
-      //                 SizedBox(width: 10),
-      //                 Icon(Icons.menu),
-      //               ],
-      //             )
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // ),
-      
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            expandedHeight: 200,
-            floating: false,
-            pinned: true,
-            leading: Padding(
-              padding: const EdgeInsets.only(top: 10, left: 8),
-              child: onScrolled
-                  ? const Text('')
-                  : const Text(
-                      'Shop',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-            ),
-            actions: const [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.calendar_month_outlined),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.menu),
-              ),
-            ],
-            flexibleSpace: const FlexibleSpaceBar(
-              title: Text('csakc'),
-            ),
-          ),
-          SliverGrid.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemCount: 100,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Container(
-                  color: Colors.grey,
+      body: InkWell(
+        onTap: () => _selectImage(context),
+        child: Center(
+          child: Container(
+            margin: const EdgeInsets.all(8),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.upload_file_outlined,
+                  color: Colors.white,
                 ),
-              );
-            },
+                Text(
+                  'Add video',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
-      // body: Column(
-      //   children: [
-      //     const SizedBox(height: 5),
-      //     ClipRRect(
-      //       borderRadius: BorderRadius.circular(8),
-      //       child: Container(
-      //         color: Colors.grey,
-      //         height: 35,
-      //         child: Padding(
-      //           padding: const EdgeInsets.all(8.0),
-      //           child: Row(
-      //             children: const [
-      //               Icon(Icons.search),
-      //               SizedBox(width: 15),
-      //               Text('Search shops'),
-      //             ],
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     const SizedBox(height: 5),
-      //     ClipRRect(
-      //       borderRadius: BorderRadius.circular(8),
-      //       child: Container(
-      //         color: Colors.grey,
-      //         height: 30,
-      //         child: Row(
-      //           mainAxisAlignment: MainAxisAlignment.center,
-      //           children: const [
-      //             Text(
-      //               'Videos',
-      //               style: TextStyle(fontWeight: FontWeight.bold),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //     GridView.builder(
-      //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      //         crossAxisCount: 2,
-      //       ),
-      //       itemBuilder: (context, index) {
-      //         return Padding(
-      //           padding: const EdgeInsets.all(2),
-      //           child: Container(color: Colors.grey),
-      //         );
-      //       },
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

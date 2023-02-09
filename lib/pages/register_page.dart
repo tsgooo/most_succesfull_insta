@@ -1,8 +1,10 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tagramm/methods/auth_method.dart';
 import 'package:tagramm/pages/login_page.dart';
+import 'package:tagramm/utilities/colors.dart';
 import 'package:tagramm/utilities/utils.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -53,9 +55,15 @@ class _RegisterPageState extends State<RegisterPage> {
     });
 
     if (res != 'Success') {
-      showSnackbar(res, context);
+      Get.snackbar(
+        'Some problem occurred to register!',
+        res,
+      );
     } else {
-      showSnackbar(res, context);
+      Get.snackbar(
+        res,
+        'Please login to enjoy!',
+      );
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const LoginPage(),
@@ -91,7 +99,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     left: 80,
                     child: IconButton(
                       onPressed: selectImage,
-                      icon: const Icon(Icons.add),
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
                 ],
@@ -100,10 +111,12 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
+                  style: const TextStyle(color: Colors.black),
                   obscureText: false,
                   controller: usernameController,
                   decoration: const InputDecoration(
                     hintText: 'Username',
+                    hintStyle: TextStyle(color: secondaryColor),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                     ),
@@ -119,10 +132,12 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
+                  style: const TextStyle(color: Colors.black),
                   keyboardType: TextInputType.emailAddress,
                   controller: emailController,
                   decoration: const InputDecoration(
                     hintText: 'Email',
+                    hintStyle: TextStyle(color: secondaryColor),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                     ),
@@ -138,10 +153,12 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
+                  style: const TextStyle(color: Colors.black),
                   obscureText: true,
                   controller: passwordController,
                   decoration: const InputDecoration(
                     hintText: 'Password',
+                    hintStyle: TextStyle(color: secondaryColor),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                     ),
@@ -157,10 +174,12 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
+                  style: const TextStyle(color: Colors.black),
                   obscureText: true,
                   controller: confirmPasswordController,
                   decoration: const InputDecoration(
                     hintText: 'Confirm password',
+                    hintStyle: TextStyle(color: secondaryColor),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                     ),
@@ -188,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: _isLoading
                           ? const Center(
                               child: CircularProgressIndicator(
-                                color: Colors.black,
+                                color: Colors.white,
                               ),
                             )
                           : const Text(

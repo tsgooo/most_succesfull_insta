@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tagramm/components/post_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,31 +21,33 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Instagram',
+            SvgPicture.asset(
+              'lib/images/ic_instagram.svg',
+              height: 35,
+              color: Colors.white,
             ),
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.favorite_outlined,
-                    color: Colors.white,
-                  ),
-                ),
-                const Icon(
-                  Icons.share,
-                  color: Colors.white,
-                ),
-              ],
-            )
+            // Row(
+            //   children: [
+            //     GestureDetector(
+            //       onTap: () {},
+            //       child: const Icon(
+            //         Icons.add,
+            //         color: Colors.white,
+            //       ),
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.all(8.0),
+            //       child: Icon(
+            //         Icons.favorite_outlined,
+            //         color: Colors.white,
+            //       ),
+            //     ),
+            //     const Icon(
+            //       Icons.share,
+            //       color: Colors.white,
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

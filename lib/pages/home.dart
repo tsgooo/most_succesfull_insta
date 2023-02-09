@@ -14,17 +14,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   addData();
-  // }
-
-  // addData() async {
-  //   UserProvider userProvider = Provider.of(context);
-  //   await userProvider.refreshUser();
-  //   print('ug ni ajilj l bnda');
-  // }
 
   int _selectedIndex = 0;
 
@@ -37,9 +26,10 @@ class _HomeState extends State<Home> {
   final List<Widget> _pages = [
     const HomePage(),
     const SearchScreen(),
-    const AddPost(),
-    ShopPage(),
+    const AddImage(),
+    const AddVideo(),
     ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid),
+    // VideoScreen(),
   ];
 
   @override

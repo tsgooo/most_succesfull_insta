@@ -2,19 +2,20 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tagramm/methods/firestore_method.dart';
 import 'package:tagramm/utilities/colors.dart';
 import 'package:tagramm/utilities/utils.dart';
 
-class AddPost extends StatefulWidget {
-  const AddPost({super.key});
+class AddImage extends StatefulWidget {
+  const AddImage({super.key});
 
   @override
-  State<AddPost> createState() => _AddPostState();
+  State<AddImage> createState() => _AddImageState();
 }
 
-class _AddPostState extends State<AddPost> {
+class _AddImageState extends State<AddImage> {
   Uint8List? _file;
   final TextEditingController _descriptionController = TextEditingController();
   bool _isLoading = false;
@@ -64,16 +65,25 @@ class _AddPostState extends State<AddPost> {
         setState(() {
           _isLoading = false;
         });
-        showSnackbar('Posted!', context);
+        Get.snackbar(
+          'Posted!',
+          'Nice picture btw!',
+        );
         clearImage();
       } else {
         setState(() {
           _isLoading = false;
         });
-        showSnackbar(res, context);
+        Get.snackbar(
+          'Error occurred posting pic.',
+          'Try some time later!',
+        );
       }
     } catch (e) {
-      showSnackbar(e.toString(), context);
+      Get.snackbar(
+        'Error occurred posting pic.',
+        e.toString(),
+      );
     }
   }
 

@@ -90,15 +90,17 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
         body: isShowUser
             ? FutureBuilder(
-                future:
-                    //  FirebaseFirestore.instance.collection('users').doc().data().toString().contains('usename') ?
-                    FirebaseFirestore.instance
-                        .collection('users')
-                        .where('username',
-                            isGreaterThanOrEqualTo: searchController.text)
-                        .get(),
+                future: FirebaseFirestore.instance
+                    .collection('users')
+                    .where('username',
+                        isGreaterThanOrEqualTo: searchController.text)
+                    .get(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasError) {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );

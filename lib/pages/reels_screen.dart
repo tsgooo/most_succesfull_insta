@@ -21,22 +21,22 @@ class ReelsPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        children: const [
+                      const Column(
+                        children: [
                           Icon(Icons.favorite_outline),
                           SizedBox(height: 10),
                           Text('1.2M'),
                         ],
                       ),
-                      Column(
-                        children: const [
+                      const Column(
+                        children: [
                           Icon(Icons.chat_bubble_outline),
                           SizedBox(height: 10),
                           Text('1.2M'),
                         ],
                       ),
-                      Column(
-                        children: const [
+                      const Column(
+                        children: [
                           Icon(Icons.send),
                           SizedBox(height: 10),
                           Text('1.2M'),
@@ -70,10 +70,10 @@ class ReelsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(2.0),
                           child: Row(
-                            children: const [
+                            children: [
                               Icon(Icons.camera_alt_outlined, size: 15),
                               Text(
                                 ' Use as template',
@@ -111,8 +111,8 @@ class ReelsPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Text(
                             'Remix with ',
                             style: TextStyle(fontSize: 12),
@@ -132,8 +132,8 @@ class ReelsPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Icon(Icons.music_video, size: 15.0),
                           SizedBox(width: 5),
                           Text(

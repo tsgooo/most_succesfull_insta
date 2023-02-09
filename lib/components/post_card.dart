@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:tagramm/methods/firestore_method.dart';
 import 'package:tagramm/pages/comment_screen.dart';
@@ -107,14 +108,24 @@ class _PostCardState extends State<PostCard> {
                           ),
                           shrinkWrap: true,
                           children: [
-                            'Delete',
+                            widget.snap['uid'] ==
+                                    FirebaseAuth.instance.currentUser!.uid
+                                ? 'Delete'
+                                : 'Save'
                           ]
                               .map(
                                 (e) => InkWell(
                                   onTap: () async {
-                                    FirestoreMethods().deletePost(
-                                      widget.snap['postId'],
-                                    );
+                                    widget.snap['uid'] ==
+                                            FirebaseAuth
+                                                .instance.currentUser!.uid
+                                        ? FirestoreMethods().deletePost(
+                                            widget.snap['postId'],
+                                          )
+                                        : Get.snackbar(
+                                            'We\'re working on it.',
+                                            'Have a good day!',
+                                          );
                                     Navigator.of(context).pop();
                                   },
                                   child: Container(
@@ -219,14 +230,19 @@ class _PostCardState extends State<PostCard> {
                   );
                 },
                 icon: const Icon(
-                  Icons.comment_outlined,
+                  Icons.mode_comment_outlined,
                   color: Colors.white,
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.snackbar(
+                    "We're working on it.",
+                    'Try some time later!',
+                  );
+                },
                 icon: const Icon(
-                  Icons.send,
+                  Icons.share_rounded ,
                   color: Colors.white,
                 ),
               ),
@@ -238,7 +254,12 @@ class _PostCardState extends State<PostCard> {
                       Icons.bookmark_border,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.snackbar(
+                        "We're working on it.",
+                        'Try some time later!',
+                      );
+                    },
                   ),
                 ),
               ),
